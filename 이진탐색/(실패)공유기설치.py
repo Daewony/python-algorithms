@@ -23,27 +23,57 @@
 
 """
 
-
 import sys
 input = sys.stdin.readline
 
+
 n, c = map(int, input().split())
-h = []
+
+arr = []
 
 for i in range(n):
-    h.append(int(input()))
-h.sort()
-res = []
-res.append(h[0])
-res.append(h[n-1])
+    arr.append(int(input()))
+arr.sort()
 
 
-lt, rt = h[0], h[n-1]
+def binary_search(arr, start, end):
+    while start <= end:
+        mid = (start + end) // 2
+        current = arr[0]
+        count = 1
 
-for i in range(1, c-1):  # 1
-    mid = (lt+rt)//2
-    l = 0
-    r = n-1
-    while l <= r:
-        m = (l+r)//2
-        if h[mid] == mid:
+        for i in range(1, len(arr)):
+            if arr[i] >= current + mid:
+                count += 1
+                current = arr[i]
+
+        if count >= c:
+            global answer
+            start = mid + 1
+            answer = mid
+        else:
+            end = mid - 1
+
+
+start = 1
+end = arr[-1] - arr[0]
+answer = 0
+
+binary_search(arr, start, end)
+print(answer)
+
+
+# res = []
+# res.append(h[0])
+# res.append(h[n-1])
+
+
+# lt, rt = h[0], h[n-1]
+
+# for i in range(1, c-1):  # 1
+#     mid = (lt+rt)//2
+#     l = 0
+#     r = n-1
+#     while l <= r:
+#         m = (l+r)//2
+#         if h[mid] == mid:
