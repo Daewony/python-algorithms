@@ -16,7 +16,6 @@ for i in apb:
 #     else:
 #         print(-1, end=' ')
 
-
 # s = list(map(str, input().strip()))
 # print(ord('a'), ord('z'))
 # try:
