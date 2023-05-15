@@ -1,4 +1,3 @@
-
 def bfs():
     q = deque([S])
     visited = [0] * (F + 1)
